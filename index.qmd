@@ -3,6 +3,8 @@ title: "Research Seminar"
 subtitle: "Fall 2026"
 ---
 
+## Practical information
+
 **Prof:** [Sergi Martínez](mailto:smsoler@clio.uc3m.es)
 **Office hours**: Tuesdays 10:00–13:00 (to be requested by email)
 
