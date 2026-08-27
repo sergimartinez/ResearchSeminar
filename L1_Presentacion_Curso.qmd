@@ -1,7 +1,8 @@
 ---
-title: "Research Seminar"
 format:
   revealjs:
+    code-fold: true
+    echo: true
     theme: custom.scss
     width: 1600
     height: 900
@@ -43,7 +44,7 @@ library(here)
 
 knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 ```
- 
+
 <br><br><br><br>
 
 ::: title
@@ -195,6 +196,131 @@ What do you think it is?
 . . .
 
 ![](llaneras.png){width=75% fig-align="center"}
+
+
+## Literature {.scrollable}
+
+
+![](month1.png){width=75% fig-align="center"}
+
+. . .
+
+
+![](month2.png){width=75% fig-align="center"}
+
+. . . 
+
+
+**Matthew effect**: once you're good or get lucky, success is much more likely afterwards
+
+
+## Relative Age Effects in Olympic Medals {.scrollable}
+
+- **Question**: Does the month-of-birth premium have future implications in top-professional sports like Olympic champions?
+
+- Data: Olympic medals <https://dataverse.nl/dataset.xhtml?persistentId=doi:10.34894/Q4KJSW>
+
+- Design: Regression Discontinuity Design, comparing the marginal change in the p. of winning a gold for Jan 1 vs. Dec 31
+
+. . .
+
+  - **Running variable**: days from nearest Jan 1 (negative = late Dec, positive = early Jan)
+
+  - **Sample**: medalists born after 1946
+
+  - **Outcome**: gold vs. lower medal, conditional on medaling
+
+  - **Estimation**: loess fit separately on each side of the cutoff
+  
+. . .
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show R code"
+#| fig-align: center
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(lubridate)
+library(readxl)
+
+df <- read_csv("olympics.csv")
+
+athletes <- df %>%
+  group_by(id) %>%
+  summarise(
+    used_name        = first(used_name),
+    full_name        = first(full_name),
+    gender           = first(gender),
+    birth_date       = first(birth_date),
+    death_date       = first(death_date),
+    birth_country    = first(birth_country),
+    birth_region_2024 = first(birth_region_2024),
+    latitude         = first(latitude),
+    longitude        = first(longitude),
+    n_events         = n(),
+    n_golds          = sum(medal == "Gold", na.rm = TRUE),
+    n_medals         = sum(medal %in% c("Gold", "Silver", "Bronze"), na.rm = TRUE),
+    first_year       = min(year, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+athletes <- athletes %>%
+  mutate(
+    birth_date_parsed = dmy(birth_date),
+    birth_year  = year(birth_date_parsed),
+    birth_month = month(birth_date_parsed),
+    birth_day   = day(birth_date_parsed)
+  ) %>%
+  filter(!is.na(birth_date_parsed))
+
+athletes <- athletes %>%
+  mutate(
+    doy        = yday(birth_date_parsed),
+    year_len   = if_else(leap_year(birth_date_parsed), 366, 365),
+    running_var = if_else(
+      doy <= ceiling(year_len / 2),
+      doy - 1,
+      doy - 1 - year_len
+    ),
+    after_cutoff = as.integer(running_var >= 0)
+  ) %>%
+  filter(birth_year > 1945)
+
+bin_width <- 7
+
+rdd_data <- athletes %>%
+  filter(n_medals > 0) %>%
+  mutate(
+    outcome = as.integer(n_golds > 0),
+    bin = floor(running_var / bin_width) * bin_width + bin_width / 2
+  ) %>%
+  filter(!is.na(running_var), abs(running_var) <= 60)
+
+binned <- rdd_data %>%
+  group_by(bin) %>%
+  summarise(mean_outcome = mean(outcome, na.rm = TRUE), n = n(), .groups = "drop")
+
+ggplot(rdd_data, aes(x = running_var, y = outcome)) +
+  geom_point(data = binned, aes(x = bin, y = mean_outcome, size = n),
+             alpha = 0.6, inherit.aes = FALSE) +
+  geom_smooth(data = filter(rdd_data, running_var < 0),
+              method = "loess", se = TRUE, color = "black") +
+  geom_smooth(data = filter(rdd_data, running_var >= 0),
+              method = "loess", se = TRUE, color = "black") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
+  labs(
+    x = "Days from Jan 1 cutoff (negative = born in preceding Dec)",
+    y = "P(gold | won a medal)",
+    size = "N per bin",
+    title = "RDD around the Dec 31 / Jan 1 birth-date cutoff",
+    subtitle = "Medalist in Olympics post-2018"
+  ) +
+  theme_minimal()
+
+```
 
 ## What we're aiming for (II) {.scrollable transition="fade" transition-speed="fast" auto-animate="true"}
 
