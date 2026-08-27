@@ -1,0 +1,246 @@
+---
+title: "Seminario de Investigación"
+format:
+  revealjs:
+    theme: custom.scss
+    width: 1600
+    height: 900
+    navigation-mode: vertical
+    controls-layout: edges
+    controls-tutorial: true
+    callout-appearance: default
+    slide-number: c/t
+    footer: "Seminario de Investigación — Seminar (RED)"
+    logo: "logo.png"
+    self-contained: true
+    chalkboard: false
+project:
+  type: website
+  output-dir: public
+bibliography: bibliord.bib
+---
+
+#  {text-align="center" data-menu-title="Introduction"}
+
+```{r}
+#| echo: false
+library(tidyverse)
+library(fontawesome)
+library(crayon)
+library(knitr)
+library(ggthemes)
+library(kableExtra)
+library(directlabels)
+library(ggtext)
+library(plotly)
+library(showtext)
+library(countrycode)
+library(readxl)
+library(gt)
+library(gtExtras)
+library(countdown)
+library(here)
+
+knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
+```
+
+<br><br><br><br>
+
+::: title
+Seminario de Investigación
+:::
+
+::: subtitle
+Seminar 1: Plagiarism, fishing, and the limits of the scientific method
+:::
+
+::: author
+Sergi Martínez
+:::
+
+<br><br><br><br>
+
+::: media
+`r fontawesome::fa(name = "envelope", fill = "#2A363B")` [smsoler\@clio.uc3m.es]{style="color:#1DA1F2"} \| `r fontawesome::fa(name = "map-pin", fill = "#2A363B")` [Room 6.01.02]{style="color:#2A363B"}
+:::
+
+## How seminars work {.scrollable}
+
+::: small
+
+- 11 sessions across the semester, combining:
+
+  - Critical discussion of the assigned readings
+
+  - Presentation of your group project
+
+  - Applied practice in R
+
+:::
+
+. . .
+
+Two components of your grade come directly from this room:
+
+::: small
+
+- **Group critical presentation** (10%): each group presents and critically evaluates one assigned article, in the week it's assigned — 15'
+
+- **Three critical questions** (10%): across the semester, each of you must raise at least three critically informed questions about the papers or the seminar content
+
+:::
+
+## Today's readings {.scrollable}
+
+::: small
+
+- Don Green / Michael LaCour episode — two press pieces:
+
+  1. PBS NewsHour, *"An Author Of Paper About Changing Minds On Gay Marriage Seeks Retraction"* (2015)
+
+  2. Retraction Watch, *"10 years after the downfall of a same-sex marriage canvassing study"* (2025)
+
+- Broockman, D., & Kalla, J. (2016). Durably reducing transphobia: A field experiment on door-to-door canvassing. *Science*, 352(6282), 220–224.
+
+:::
+
+## The finding that made headlines {.scrollable}
+
+LaCour & Green (2014), *"When Contact Changes Minds"*, published in **Science**:
+
+- A single ~20-minute doorstep conversation with a gay canvasser durably shifted people's support for same-sex marriage
+
+. . .
+
+- Covered by *This American Life*, the *NYT*, the *WSJ*, the *Washington Post*, *Vox*, and more — a dream result, and a dream case for teaching field experiments
+
+. . .
+
+- Two Berkeley graduate students, David Broockman and Joshua Kalla, admired the design enough to want to extend it themselves
+
+## The unraveling {.scrollable}
+
+::: small
+
+While preparing their own extension, Broockman, Kalla, and Peter Aronow (Yale) tried to reconstruct LaCour's dataset — and kept hitting inconsistencies
+
+:::
+
+. . .
+
+- They documented **eight statistical irregularities**, none conclusive alone, but jointly pointing the same way
+
+- Their report's conclusion, in careful academic language: the data *"were not collected as described"*
+
+. . .
+
+<br>
+
+- They brought it to Donald Green, the senior co-author, who confronted LaCour — who confessed to fabricating the data
+
+- Green requested the retraction himself; *Science* retracted the paper in May 2015
+
+## Discuss {.discussion .center}
+```{css}
+.center h2 {
+  text-align: center;
+}
+```
+
+Why didn't peer review catch this? What made the finding so attractive to fabricate in the first place? What did *replication* — not review — end up catching?
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 8, warn_when = 60)
+```
+
+## From scandal to science {.scrollable}
+
+Retracting a paper doesn't answer the underlying question — it just leaves it open again.
+
+. . .
+
+- Broockman & Kalla went on to run the study properly themselves: real door-to-door canvassing in Miami, this time on **transphobia**, with a placebo topic (recycling) as the control conversation
+
+- Result: genuine, durable reductions in prejudice — replicated later in other contexts
+
+. . .
+
+<br>
+
+*"Science advances incrementally"* — a fabricated shortcut doesn't survive; a slow, careful, replicable design does.
+
+## Fishing expeditions {.scrollable}
+
+Fabrication is the extreme case. Far more common, and much harder to spot, is **fishing**:
+
+- Multiple comparisons — testing many outcomes, subgroups, or specifications until one is significant
+
+- The garden of forking paths — the same dataset can support many "reasonable" analysis choices; which one gets published?
+
+- HARKing — Hypothesizing After the Results are Known, then writing the paper as if the hypothesis came first
+
+. . .
+
+Each of these inflates the rate of false positives, without anyone needing to fabricate a single number.
+
+## The limits of "the" scientific method, applied to social reality {.scrollable}
+
+::: small
+
+Political and social phenomena resist the clean version of the scientific method you may associate with a lab:
+
+:::
+
+- Most treatments of interest can't be randomly assigned (a war, an institution, an identity)
+
+- Confounding is the default, not the exception, in observational data
+
+- Context matters: an effect found in one setting may not travel to another (external validity)
+
+- The subjects are reflexive — people react to being studied, to incentives, to the researcher
+
+. . .
+
+This is part of why the 2010s brought a **replication crisis** across psychology, economics, and political science — and why our field now leans harder on preregistration, transparency, and replication.
+
+## Safeguards for this semester {.scrollable}
+
+::: small
+
+- Cite properly — every idea or text you use must be attributed (APA, for instance)
+
+- Share your data and code — reproducibility is the point of the R workshops later this semester
+
+- AI tools are a powerful aid for editing and clarity — **not** for writing from scratch or inventing references
+
+:::
+
+. . .
+
+<br>
+
+**Any hallucinated citations or evidence, or any form of plagiarism — AI-generated or otherwise — is evaluated with a grade of zero.**
+
+## Group formation
+
+Since our very first scheduled seminar (Sept 7) was cancelled, we'll use today's session to:
+
+1. Form your project groups
+
+2. Set the rota for the group critical presentations across the semester
+
+## Looking ahead
+
+**Friday, Sept 18 — Lecture 2**: The research process I: from the question to hypotheses.
+
+<br>
+
+**Monday, Sept 21 — Seminar**: Motivation and research questions. Read Cyrus Samii's blog and identify three societal problems — we'll discuss how to turn them into research questions.
+
+## See you Friday! smsoler\@clio.uc3m.es {.center}
+```{css}
+.center h2 {
+  text-align: center;
+}
+```
