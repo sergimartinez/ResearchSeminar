@@ -1,0 +1,17 @@
+---
+title: "Research Seminar"
+subtitle: "Fall 2026"
+---
+
+**Prof:** Sergi Martínez · <sergi.martinez@uc3m.es>
+
+Universidad Carlos III de Madrid
+
+---
+
+## Schedule
+
+| Session | Topic | Slides |
+|---|---|---|
+| L1 | Presentación del curso | [Slides](L1_Presentacion_Curso.html) |
+| S1 | Fraude y método | [Slides](S1_Fraude_y_Metodo.html) |  
