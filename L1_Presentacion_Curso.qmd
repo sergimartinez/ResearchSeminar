@@ -43,7 +43,7 @@ library(here)
 
 knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 ```
-
+ 
 <br><br><br><br>
 
 ::: title
