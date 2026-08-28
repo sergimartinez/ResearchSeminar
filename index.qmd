@@ -1,6 +1,6 @@
 ---
-title: "Research Seminar · BA in Intl. Studies and Political Science · University Carlos III of Madrid"
-subtitle: "Fall 2026 · Group 45"
+title: "Research Seminar"
+subtitle: "Group 45 · BA in Intl. Studies and Political Science · University Carlos III of Madrid"
 ---
 
 ## Practical information
