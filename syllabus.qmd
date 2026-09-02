@@ -75,12 +75,15 @@ Artificial intelligence tools (ChatGPT, Claude, and similar) are powerful aids f
 **L3 (Sept 25). The research process II: from shoe-leather to experimental approaches.**
 
 - [Harvard Online video about John Snow](https://www.youtube.com/watch?v=lNjrAXGRda4)
+
 - Treisman, D. (2020). Democracy by mistake: How the errors of autocrats trigger transitions to freer government. *American Political Science Review*, 114(3), 792–810.
+
 - Dunning, T., et al. (2019). Voter information campaigns and political accountability: Cumulative findings from a preregistered meta-analysis of coordinated trials. *Science Advances*, 5(7), eaaw2612.
 
-**L4 (Oct 2). Causality, case-studies, and measurement. Visualization with R (ggplot).**
+**L4 (Oct 2). Counterfactuals and measurement. Intro to R.**
 
 - Fearon, J. D. (1991). Counterfactuals and hypothesis testing in political science. *World Politics*, 43(2), 169–195.
+
 - Pager, D., & Quillian, L. (2005). Walking the talk? What employers say versus what they do. *American Sociological Review*, 70(3), 355–380.
 
 **L5 (Oct 9). Qualitative methods I: Case studies, in-depth interviews, and focus groups.**
@@ -148,23 +151,25 @@ Artificial intelligence tools (ChatGPT, Claude, and similar) are powerful aids f
 - Samii, C. (2023). Methodologies for "Political Science as Problem Solving". In *Oxford Handbook of Engaged Methodological Pluralism in Political Science*. Oxford University Press.
 - Read the introduction of: Bush, S. S., & Clayton, A. (2023). Facing change: Gender and climate change attitudes worldwide. *American Political Science Review*, 117(2), 591–608.
 
-**S3 (Sept 28). Literature review vs. theory sections.** This session will help assess good theory sections and how to make a literature review helpful, building hypotheses that theoretically answer our research questions.
+**S3 (Sept 28). Literature review vs. theory sections.** This session will help write helpful literature reviews, building hypotheses that theoretically answer our research questions. 5–10' presentation of the first part of the project.
 
 - Read Lit and Theory sections: Goyal, T. (2023). Representation from below: How women's grassroots party activism promotes equal political participation. *American Political Science Review*, 1–16.
 - Read Intro, Concepts, Lit, Theory: Juon, A. (2025). The long-term consequences of power-sharing for ethnic salience. *Journal of Peace Research*, 62(3), 613–628.
 
-**S4 (Oct 5). Qualitative methods: case studies.** 5–10' presentation of the first part of the project.
+**S4 (Oct 5). Intro to R: Tidyverse and ggplot.** 
 
-- Lapuente, V., & Rothstein, B. (2014). Civil war Spain versus Swedish harmony: the quality of government factor. *Comparative Political Studies*, 47(10), 1416–1441.
-
-**S5 (Oct 19). Introduction to R (1). Data import, cleaning, and visualizing with tidyverse and ggplot.**
-
+- [Introduction to R and Tidyverse](https://jhudatascience.org/tidyversecourse/intro.html)
 - [ggplot2-book.org/introduction](https://ggplot2-book.org/introduction)
 - [ggplot2-book.org/getting-started](https://ggplot2-book.org/getting-started)
+
+**S5 (Oct 19). Qualitative methods: case studies.**
+
+- Lapuente, V., & Rothstein, B. (2014). Civil war Spain versus Swedish harmony: the quality of government factor. *Comparative Political Studies*, 47(10), 1416–1441.
 
 **S6 (Oct 26). Qualitative methods: interview and process tracing.** 5–10' presentation of the second part of the project.
 
 - Kantola, J., & Lombardo, E. (2019). Populism and feminist politics: The cases of Finland and Spain. *European Journal of Political Research*, 58(4), 1108–1128.
+
 - Pavone, T., & Stiansen, Ø. (2022). The shadow effect of courts. *American Political Science Review*, 116(1), 322–336.
 
 **S7 (Nov 9). Introduction to R (II): OLS and selection problems.** Discussion: how would a regression answer your research question?
